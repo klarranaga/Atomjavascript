@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script>
+
+    $(document).ready( function(){
+        console.log('jquery esta lista');
+
+        $('#guardar').click( function(){
+            $(this).hide();
+
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/users",
+    
+                success: function( result ) {
+
+                    setTimeout( function() {
+                        console.log("Se han obtenido" +  result.length +  "elementos" );
+                        _.sortBy(result, ['email']);
+                        result = _.sortBy(result, ['email'],['asc']);
+    
+
+                        for ( var i = 0; i < result.length; i ++){
+                            document.write("El email es:" + result[i].email + "<br/v>");
+                        }
+                    },3000);
+                    
+                    /*
+                    
+                    */
+
+                }        
+    
+            });
+
+            console.log('fin del codigo');
+
+
+
+
+
+
+        });
+
+    });
+
+        </script>
+
+</head>
+<body>
+
+    Hola mundo <button id="guardar">save</button>
+
+        </body>
+</html>   
